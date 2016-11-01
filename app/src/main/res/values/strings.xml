@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">LabMerc1</string>
+    <string name="element_pref">Element</string>
+    <string name="you_sure_content">Are you sure to delete this items?</string>
+    <string name="you_sure">Are you sure?</string>
+    <string name="agree">Yes</string>
+    <string name="disagree">No</string>
+</resources>
