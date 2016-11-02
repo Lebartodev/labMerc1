@@ -2,7 +2,7 @@ package com.lebartodev.labmerc1.presenter;
 
 import com.lebartodev.labmerc1.ListPage;
 import com.lebartodev.labmerc1.model.Item;
-import com.lebartodev.labmerc1.model.ItemModel;
+import com.lebartodev.labmerc1.model.ItemObs;
 
 import rx.Subscription;
 import rx.functions.Action1;
@@ -11,34 +11,42 @@ import rx.functions.Action1;
  * Created by Александр on 01.11.2016.
  */
 
-public class ListPresenter {
+public class ListPresenter implements BaseListPresenter {
     private Subscription subscription;
-    private ItemModel model;
+    private ItemObs model;
     private ListPage listPage;
-
 
 
     public ListPresenter(ListPage listPage) {
         this.listPage = listPage;
-        model=new ItemModel();
+        model = new ItemObs();
     }
 
-    public void initSubscription(){
-        subscription=model.getObservable().subscribe(new Action1<Item>() {
+    @Override
+    public void initSubscription() {
+        subscription = model.getObservable().subscribe(new Action1<Item>() {
             @Override
             public void call(Item item) {
                 listPage.addItem(item);
-
-
             }
         });
         model.startEmits();
     }
-    public void deleteItem(int position){
+
+    @Override
+    public void deleteItem(int position) {
         model.deleteItem(position);
         listPage.deleteItem(position);
     }
-    private void onStop(){
+
+    @Override
+    public void addItem(String name) {
+
+
+    }
+
+    @Override
+    public void onStop() {
         subscription.unsubscribe();
     }
 }

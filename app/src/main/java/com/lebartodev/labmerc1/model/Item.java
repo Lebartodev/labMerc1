@@ -6,7 +6,16 @@ package com.lebartodev.labmerc1.model;
 
 public class Item {
    private  String title;
-    private boolean selected=false;
+    private int color=0;
+
+    public int getColor() {
+        return color;
+    }
+
+    public Item(String title, int color) {
+        this.title = title;
+        this.color = color;
+    }
 
     public String getTitle() {
         return title;
@@ -16,15 +25,5 @@ public class Item {
         this.title = title;
     }
 
-    public boolean isSelected() {
-        return selected;
-    }
 
-    public void setSelected(boolean selected) {
-        this.selected = selected;
-    }
-
-    public Item(String title) {
-        this.title = title;
-    }
 }

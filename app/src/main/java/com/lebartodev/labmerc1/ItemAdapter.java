@@ -6,7 +6,6 @@ package com.lebartodev.labmerc1;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.graphics.drawable.GradientDrawable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -19,7 +18,6 @@ import android.widget.Toast;
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.lebartodev.labmerc1.model.Item;
-import com.lebartodev.labmerc1.model.ItemModel;
 import com.lebartodev.labmerc1.presenter.ListPresenter;
 
 import java.util.List;
@@ -62,26 +60,11 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemVH> {
         holder.title.setText(items.get(position).getTitle());
 
 
-        holder.icon.setBackgroundColor(getColorByPosition(position));
-        if (items.get(position).isSelected()) {
-            holder.view.setBackgroundColor(Color.LTGRAY);
-            holder.title.setTextColor(Color.WHITE);
-        } else {
-            holder.view.setBackgroundColor(Color.WHITE);
-            holder.title.setTextColor(Color.BLACK);
-        }
-        holder.view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                items.get(holder.getAdapterPosition()).setSelected(true);
-                notifyDataSetChanged();
-
-                Toast.makeText(context, "You click on element " + (holder.getAdapterPosition() + 1), Toast.LENGTH_SHORT).show();
+        holder.icon.setBackgroundColor(getColor(items.get(position).getColor()));
 
 
-            }
 
-        });
+        
         holder.view.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
@@ -105,25 +88,25 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemVH> {
 
     }
 
-    private int getColorByPosition(int position) {
-        int res = (position + 1) % 8;
-        switch (res) {
-            case 0:
-                return Color.RED;
-            case 1:
-                return Color.MAGENTA;
-            case 2:
-                return Color.YELLOW;
-            case 3:
-                return Color.GREEN;
-            case 4:
-                return Color.BLUE;
-            case 5:
-                return Color.BLUE;
-            case 6:
-                return Color.CYAN;
-            case 7:
+    private int getColor(int color) {
+
+        switch (color) {
+            case Consts.COLOR_TRANS:
                 return Color.TRANSPARENT;
+            case Consts.COLOR_RED:
+                return Color.RED;
+            case Consts.COLOR_BLUE:
+                return Color.BLUE;
+            case Consts.COLOR_BLUE_DARK:
+                return Color.TRANSPARENT;//TODO: blueDark
+            case Consts.COLOR_GREEN:
+                return Color.GREEN;
+            case Consts.COLOR_ORANGE:
+                return Color.TRANSPARENT;//TODO: orange
+            case Consts.COLOR_PURPLE:
+                return Color.TRANSPARENT;//TODO: purple
+            case Consts.COLOR_YELLOW:
+                return Color.YELLOW;
         }
         return Color.TRANSPARENT;
 

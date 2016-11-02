@@ -5,4 +5,16 @@
     <string name="you_sure">Are you sure?</string>
     <string name="agree">Yes</string>
     <string name="disagree">No</string>
+
+    <string name="select_color">Select color</string>
+    <string-array name="colors">
+        <item>Transparent</item>
+        <item>Red</item>
+        <item>Yellow</item>
+        <item>Orange</item>
+        <item>Blue</item>
+        <item>Dark blue</item>
+        <item>Green</item>
+        <item>Purple</item>
+    </string-array>
 </resources>
