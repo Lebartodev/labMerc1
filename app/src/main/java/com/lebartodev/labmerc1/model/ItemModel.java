@@ -9,6 +9,13 @@ import rx.Observable;
 public interface ItemModel {
     void startEmits();
     void deleteItem(int position);
-    Observable<Item> getObservable();
-    boolean addItem(String itemName,int color);
+    Observable<Item> getListObs();
+    void addItem(String name,int color);
+
+    
+    void checkName(String name);
+    Observable<Boolean> getCheckObs();
+
+
+
 }

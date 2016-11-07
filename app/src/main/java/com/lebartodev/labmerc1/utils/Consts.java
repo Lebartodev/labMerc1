@@ -1,4 +1,4 @@
-package com.lebartodev.labmerc1;
+package com.lebartodev.labmerc1.utils;
 
 /**
  * Created by Александр on 02.11.2016.

@@ -1,4 +1,4 @@
-package com.lebartodev.labmerc1;
+package com.lebartodev.labmerc1.view;
 
 import com.lebartodev.labmerc1.model.Item;
 

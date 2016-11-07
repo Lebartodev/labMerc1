@@ -1,6 +1,6 @@
 package com.lebartodev.labmerc1.presenter;
 
-import com.lebartodev.labmerc1.ListPage;
+import com.lebartodev.labmerc1.view.ListPage;
 import com.lebartodev.labmerc1.model.Item;
 import com.lebartodev.labmerc1.model.ItemObs;
 
@@ -24,7 +24,7 @@ public class ListPresenter implements BaseListPresenter {
 
     @Override
     public void initSubscription() {
-        subscription = model.getObservable().subscribe(new Action1<Item>() {
+        subscription = model.getListObs().subscribe(new Action1<Item>() {
             @Override
             public void call(Item item) {
                 listPage.addItem(item);

@@ -1,4 +1,4 @@
-package com.lebartodev.labmerc1;
+package com.lebartodev.labmerc1.view;
 
 /**
  * Created by Александр on 01.11.2016.
@@ -6,6 +6,7 @@ package com.lebartodev.labmerc1;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,10 +14,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.lebartodev.labmerc1.utils.Consts;
+import com.lebartodev.labmerc1.R;
 import com.lebartodev.labmerc1.model.Item;
 import com.lebartodev.labmerc1.presenter.ListPresenter;
 
@@ -59,8 +61,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemVH> {
 
         holder.title.setText(items.get(position).getTitle());
 
-
-        holder.icon.setBackgroundColor(getColor(items.get(position).getColor()));
+        ((GradientDrawable)holder.icon.getBackground()).setColor(getColor(items.get(position).getColor()));
 
 
 
@@ -96,15 +97,15 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemVH> {
             case Consts.COLOR_RED:
                 return Color.RED;
             case Consts.COLOR_BLUE:
-                return Color.BLUE;
+                return Color.argb(255,105,182,220);
             case Consts.COLOR_BLUE_DARK:
-                return Color.TRANSPARENT;//TODO: blueDark
+                return Color.BLUE;
             case Consts.COLOR_GREEN:
                 return Color.GREEN;
             case Consts.COLOR_ORANGE:
-                return Color.TRANSPARENT;//TODO: orange
+                return Color.argb(255,255,183,77);
             case Consts.COLOR_PURPLE:
-                return Color.TRANSPARENT;//TODO: purple
+                return Color.argb(255,224,64,251);
             case Consts.COLOR_YELLOW:
                 return Color.YELLOW;
         }

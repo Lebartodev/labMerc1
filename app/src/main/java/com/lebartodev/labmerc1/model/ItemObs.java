@@ -2,7 +2,7 @@ package com.lebartodev.labmerc1.model;
 
 import android.graphics.Color;
 
-import com.lebartodev.labmerc1.Consts;
+import com.lebartodev.labmerc1.utils.Consts;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,15 +17,20 @@ import rx.subjects.PublishSubject;
 public class ItemObs implements ItemModel {
     private List<Item> items;
     PublishSubject<Item>  subject = PublishSubject.create();
-
-    @Override
-    public void startEmits(){
+    PublishSubject<Boolean>  subjectCheck = PublishSubject.create();
+    public ItemObs(){
         items = new ArrayList<>();
         for(int i =0;i<50;i++){
             Item item = new Item("Element "+(i+1),getColorByPosition(i));
             items.add(item);
-            subject.onNext(item);
+
         }
+    }
+
+    @Override
+    public void startEmits(){
+        for(Item item:items)
+        subject.onNext(item);
 
     }
 
@@ -58,20 +63,31 @@ public class ItemObs implements ItemModel {
         items.remove(position);
     }
     @Override
-    public Observable<Item> getObservable(){
+    public Observable<Item> getListObs(){
         return subject;
 
     }
 
     @Override
-    public boolean addItem(String itemName,int color) {
+    public void addItem(String itemName,int color) {
         Item item = new Item(itemName,color);
+    }
 
-        if(items!=null&&!items.contains(item))
-            return true;
-        else
+    @Override
+    public void checkName(String name) {
+        for(Item item:items){
+            if(item.getTitle().equals(name)) {
+                subjectCheck.onNext(false);
+                return;
+            }
+        }
+        subjectCheck.onNext(true);
 
-        return false;
+    }
+
+    @Override
+    public Observable<Boolean> getCheckObs() {
+        return subjectCheck;
     }
 
 

@@ -1,28 +1,32 @@
-package com.lebartodev.labmerc1;
+package com.lebartodev.labmerc1.view;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 
+import com.lebartodev.labmerc1.R;
 import com.lebartodev.labmerc1.model.Item;
 import com.lebartodev.labmerc1.presenter.ListPresenter;
 
 import org.androidannotations.annotations.AfterViews;
-import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@EActivity(R.layout.activity_main)
-public class MainActivity extends AppCompatActivity implements ListPage {
+@EFragment(R.layout.fragment_list)
+public class ListFragment extends Fragment implements ListPage {
+
     @ViewById
     RecyclerView itemsList;
     private ItemAdapter adapter;
     RecyclerView.LayoutManager mLayoutManager;
     private ListPresenter presenter;
+
+    public ListFragment() {
+    }
+
     @AfterViews
     void initPresenter(){
         presenter=new ListPresenter(this);
@@ -36,8 +40,8 @@ public class MainActivity extends AppCompatActivity implements ListPage {
         if(adapter==null) {
             List<Item> chats = new ArrayList<>();
             chats.add(item);
-            adapter = new ItemAdapter(this, chats,presenter);
-            mLayoutManager = new LinearLayoutManager(this);
+            adapter = new ItemAdapter(getActivity(), chats,presenter);
+            mLayoutManager = new LinearLayoutManager(getActivity());
             itemsList.setLayoutManager(mLayoutManager);
             itemsList.setAdapter(adapter);
 

@@ -4,4 +4,7 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="textColor">#000000</color>
+    <color name="blueLight">#69b6dc</color>
+    <color name="orange">#ffb74d</color>
+    <color name="purple">#e040fb</color>
 </resources>
