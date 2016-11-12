@@ -1,11 +1,12 @@
 package com.lebartodev.labmerc1.model;
 
 import android.graphics.Color;
+import android.util.Log;
 
 import com.lebartodev.labmerc1.utils.Consts;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import rx.Observable;
 import rx.subjects.PublishSubject;
@@ -15,23 +16,35 @@ import rx.subjects.PublishSubject;
  */
 
 public class ItemObs implements ItemModel {
-    private List<Item> items;
-    PublishSubject<Item>  subject = PublishSubject.create();
-    PublishSubject<Boolean>  subjectCheck = PublishSubject.create();
-    public ItemObs(){
-        items = new ArrayList<>();
-        for(int i =0;i<50;i++){
-            Item item = new Item("Element "+(i+1),getColorByPosition(i));
-            items.add(item);
 
+    public static PublishSubject<Item> subject = PublishSubject.create();
+    PublishSubject<Boolean> subjectCheck = PublishSubject.create();
+
+    public ItemObs() {
+        if (!isDatabaseExist()) {
+            for (int i = 0; i < 50; i++) {
+                Item item = new Item("Element " + (i + 1), getColorByPosition(i));
+                Item.save(item);
+                //items.add(item);
+
+            }
         }
+
+
+    }
+
+    private boolean isDatabaseExist() {
+        Log.d("ItemObs", "Item count = " + Item.count(Item.class));
+        if (Item.count(Item.class) > 0) {
+            return true;
+        } else return false;
     }
 
     @Override
-    public void startEmits(){
-        for(Item item:items)
-        subject.onNext(item);
-
+    public void startEmits() {
+        List<Item> items = Item.listAll(Item.class);
+        for (Item item : items)
+            subject.onNext(item);
     }
 
     private int getColorByPosition(int position) {
@@ -58,30 +71,46 @@ public class ItemObs implements ItemModel {
 
 
     }
+
     @Override
-    public void deleteItem(int position){
-        items.remove(position);
+    public void deleteItem(String name) {
+        List<Item> items = Item.find(Item.class, "title=?", name);
+        items.get(0).delete();
     }
+
     @Override
-    public Observable<Item> getListObs(){
+    public void deleteItem(Long position) {
+        Log.d("ItemObs","Position: "+position);
+        Item item = Item.findById(Item.class, position);
+
+        item.delete();
+    }
+
+    @Override
+    public Observable<Item> getListObs() {
         return subject;
 
     }
 
     @Override
-    public void addItem(String itemName,int color) {
-        Item item = new Item(itemName,color);
+    public void addItem(String itemName, int color) {
+
+        Item item = new Item(itemName, color);
+        item.save();
+        subject.onNext(item);
     }
+
+
 
     @Override
     public void checkName(String name) {
-        for(Item item:items){
-            if(item.getTitle().equals(name)) {
-                subjectCheck.onNext(false);
-                return;
-            }
-        }
-        subjectCheck.onNext(true);
+
+        List<Item> items = Item.find(Item.class, "title =?", name);
+        if (items.size() > 0) {
+            subjectCheck.onNext(false);
+        } else
+            subjectCheck.onNext(true);
+
 
     }
 

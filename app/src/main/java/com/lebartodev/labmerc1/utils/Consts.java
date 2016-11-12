@@ -17,4 +17,8 @@ public class Consts {
     public final static String CONTENT_TITLE="CONTENT_TITLE";
     public final static String CONTENT_COLOR="CONTENT_COLOR";
 
+    public static final String FRAGMENT_ADD = "FRAGMENT_ADD";
+    public static final String FRAGMENT_LIST = "FRAGMENT_LIST";
+    public static final String SAVED_LAYOUT_MANAGER = "SAVED_LAYOUT_MANAGER";
+    public static final String SAVED_FRAGMENT = "SAVED_FRAGMENT";
 }

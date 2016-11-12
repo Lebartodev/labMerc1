@@ -7,4 +7,8 @@
     <color name="blueLight">#69b6dc</color>
     <color name="orange">#ffb74d</color>
     <color name="purple">#e040fb</color>
+    <color name="delete_bg">#ff3745</color>
+    <color name="dark_bg">#686868</color>
+    <color name="white">#ffffff</color>
+    <color name="light_text_color">#bababa</color>
 </resources>

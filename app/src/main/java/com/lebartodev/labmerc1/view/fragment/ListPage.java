@@ -1,4 +1,4 @@
-package com.lebartodev.labmerc1.view;
+package com.lebartodev.labmerc1.view.fragment;
 
 import com.lebartodev.labmerc1.model.Item;
 
@@ -11,4 +11,5 @@ public interface ListPage {
     void deleteItem(int position);
 
 
+    void callDelete(int position, Long id);
 }

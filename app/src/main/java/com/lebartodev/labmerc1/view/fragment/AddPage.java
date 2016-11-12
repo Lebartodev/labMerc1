@@ -1,4 +1,4 @@
-package com.lebartodev.labmerc1.view;
+package com.lebartodev.labmerc1.view.fragment;
 
 /**
  * Created by Александр on 07.11.2016.

@@ -6,7 +6,7 @@ package com.lebartodev.labmerc1.presenter;
 
 public interface BaseAddPresenter {
     void onPickColor(int color);
-    void onAddItem();
     void checkTitle(String title);
+    void onStop();
 
 }

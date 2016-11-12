@@ -5,10 +5,14 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.lebartodev.labmerc1.view.MainActivity">
+    tools:context="com.lebartodev.labmerc1.view.ColorListActivity">
 
     <FrameLayout
         android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    <FrameLayout
+        android:id="@+id/container_add"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
@@ -19,6 +23,6 @@
         android:layout_gravity="bottom|end"
         android:layout_marginBottom="10dp"
         android:layout_marginRight="10dp"
-        android:src="@android:drawable/ic_menu_help"
+        android:src="@drawable/ic_plus"
         app:layout_behavior="com.lebartodev.labmerc1.view.HideOnScrollFAB" />
 </android.support.design.widget.CoordinatorLayout>

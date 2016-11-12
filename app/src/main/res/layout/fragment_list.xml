@@ -2,10 +2,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.lebartodev.labmerc1.view.ListFragment">
-    <android.support.v7.widget.RecyclerView
+    tools:context="com.lebartodev.labmerc1.view.fragment.ListFragment">
+    <com.tubb.smrv.SwipeMenuRecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/itemsList" />
+        android:id="@+id/itemsList"/>
 
 </FrameLayout>

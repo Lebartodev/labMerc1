@@ -8,7 +8,8 @@ import rx.Observable;
 
 public interface ItemModel {
     void startEmits();
-    void deleteItem(int position);
+    void deleteItem(String title);
+    void deleteItem(Long position);
     Observable<Item> getListObs();
     void addItem(String name,int color);
 

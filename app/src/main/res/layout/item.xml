@@ -1,29 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<com.tubb.smrv.SwipeHorizontalMenuLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:sml="http://schemas.android.com/tools"
+    android:id="@+id/swipeLayout"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingBottom="10dp"
-    android:paddingTop="10dp">
-
-    <TextView
-        android:text="TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/listTitle"
-        android:textColor="@color/textColor"
-        android:layout_marginLeft="10dp"
-        android:textSize="20dp"
-        android:layout_centerVertical="true"/>
-    <ImageView
-        android:id="@+id/itemImage"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:background="@drawable/circle"
-        android:layout_centerVertical="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="10dp"/>
+    sml:sml_scroller_interpolator="@android:anim/bounce_interpolator"
+    sml:sml_auto_open_percent="0.2"
+    sml:sml_scroller_duration="250">
 
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="10dp"
+        android:id="@+id/smContentView"
+        android:paddingTop="10dp"
+        android:background="@drawable/element_bg_selector">
+
+        <TextView
+            android:id="@+id/listTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:text="TextView"
+            android:textColor="@color/element_text_selector"
+            android:textSize="20dp" />
+
+        <ImageView
+            android:id="@+id/itemImage"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/circle" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/smMenuViewRight"
+        android:layout_width="50dp"
+        android:layout_height="match_parent"
+        android:background="@color/delete_bg">
+
+        <ImageView
+            android:id="@+id/deleteAction"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+
+            android:src="@drawable/ic_close"/>
 
 
-</RelativeLayout>
+    </RelativeLayout>
+
+
+
+</com.tubb.smrv.SwipeHorizontalMenuLayout>

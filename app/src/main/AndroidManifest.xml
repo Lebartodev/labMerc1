@@ -3,17 +3,34 @@
     package="com.lebartodev.labmerc1">
 
     <application
+        android:name="com.orm.SugarApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.MainActivity_">
+        <meta-data
+            android:name="DATABASE"
+            android:value="labmerc.db" />
+        <meta-data
+            android:name="VERSION"
+            android:value="2" />
+        <meta-data
+            android:name="QUERY_LOG"
+            android:value="true" />
+        <meta-data
+            android:name="DOMAIN_PACKAGE_NAME"
+            android:value="com.lebartodev.labmerc1" />
+
+        <activity
+            android:theme="@style/AppTheme.NoActionBar" android:name=".view.SplashActivity_">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".view.ColorListActivity_">
+
         </activity>
     </application>
 

@@ -5,7 +5,8 @@ package com.lebartodev.labmerc1.presenter;
  */
 
 public interface BaseListPresenter {
-    void deleteItem(int position);
+    void onRecreateView();
+    void deleteItem(int position,Long id);
     void addItem(String name);
     void onStop();
     void initSubscription();
